@@ -99,7 +99,7 @@ header{
   color:#fff;}
 .hero-wrap{display:grid;gap:28px;grid-template-columns:1fr;align-items:center;padding:64px 0}
 .hero-text h1{font-size:clamp(1.8rem,3.6vw,2.8rem);line-height:1.15;margin:20px 0 10px}
-.hero-text h2{font-size:clamp(1.5rem,3vw,2.3rem);line-height:1.2;margin:0 0 10px;font-weight:500}
+.hero-text h2{font-size:clamp(1.5rem,3vw,2rem);line-height:1.2;margin:0 0 10px;font-weight:500}
 .hero-text p{color:#eaf1ff;font-size:clamp(1rem,1.4vw,1.125rem);margin:0 0 20px}
 .badge{display:inline-flex;gap:.5rem;align-items:center;padding:.4rem .7rem;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);border-radius:999px;font-weight:600}
 .hero-media{
