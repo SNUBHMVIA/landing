@@ -9,205 +9,199 @@
 </head>
 <body>
 
-<header>
-  <div class="container nav">
-    <a href="#" class="brand"><img src="logo-blue01.svg" alt="MVIA Logo" class="brand-logo"></a>
-    <nav class="links">
-      <a href="#modules">기능</a>
-      <a href="#flow">워크플로우</a>
-      <a href="#ai-detail">AI기능</a>
-      <!-- <a href="#security">보안</a> -->
-      <!-- <a href="#pricing">가격</a> -->
-      <a href="#contact" class="btn primary" style="padding:.55rem 1rem;color:#fff">데모 신청</a>
-    </nav>
-  </div>
-</header>
+<div class="hero-bg">
+  <header>
+    <div class="container nav">
+      <a href="#" class="brand"><img src="logo-blue01.svg" alt="MVIA Logo" class="brand-logo"></a>
+      <nav class="links">
+        <a href="#overview-detail">서비스</a>
+        <a href="#why">가치</a>
+        <a href="#ecosystem">흐름</a>
+        <!-- <a href="#trust">신뢰</a> -->
+        <a href="#contact" class="btn primary" style="padding:.55rem 1rem;color:#fff">문의하기</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 히어로: 메인 슬로건 -->
+  <section class="hero hero-grid" id="overview" aria-labelledby="overview-title">
+    <div class="container">
+      <div class="hero-graphic" aria-hidden="true">
+        <div class="hero-graphic__ring">
+          <svg class="hero-ring-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <g class="hero-ring-circle-wrap">
+              <circle class="hero-ring-circle" cx="100" cy="100" r="92" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="1 8" />
+            </g>
+            <g class="hero-ring-icon hero-ring-icon--house" transform="translate(100,100)">
+              <g transform="rotate(-135) translate(0,-92)">
+                <path d="M0-8 L-6 2 L-3.5 2 L-3.5 6 L3.5 6 L3.5 2 L6 2 Z" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+              </g>
+            </g>
+            <g class="hero-ring-icon hero-ring-icon--hospital" transform="translate(100,100)">
+              <g transform="rotate(45) translate(0,-92)">
+                <path d="M-5 6 L-5-5 L-1.5-5 L-1.5-7 L1.5-7 L1.5-5 L5-5 L5 6 L1.5 6 L1.5 2 L-1.5 2 L-1.5 6 Z" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+                <path d="M-2 0 L2 0 M0-2 L0 2" stroke="currentColor" stroke-width="1"/>
+              </g>
+            </g>
+          </svg>
+        </div>
+        <img src="logo-blue01.svg" alt="" class="hero-graphic__logo" />
+      </div>
+      <h2 id="overview-title" class="hero-headline">단순한 편의를 넘어, 의료의 본질을 혁신합니다.</h2>
+      <p class="lead lead-hero hero-sub">미래 의료의 스탠다드, Quere와 함께하십시오.</p>
+    </div>
+  </section>
+</div>
 
 <main>
-  <!-- HERO -->
-  <section class="hero">
-    <div class="container hero-wrap">
-      <div class="hero-text">
-        <!-- <span class="badge">설치 없음 · 즉시 사용 가능 · 교육 포함</span> -->
-        <h1>스마트 병원을 위한</h1>
-        <h2>원격 모니터링, 원격 복약지도, 비대면진료</h2>
-        <p>원격 진료 · 환자 생체 데이터 · 복약 알림까지 All-in-one 플랫폼</p>
-        <div class="cta">
-          <a href="#contact" class="btn primary">데모 신청</a>
-          <a href="#modules" class="btn ghost">기본 기능 살펴보기</a>
-        </div>
-      </div>
-      <div class="hero-media" aria-label="제품 UI 미리보기"></div>
+  <!-- 서비스 전체 한눈에 보기 (두 번째 섹션) -->
+  <section class="section" id="overview-detail" aria-labelledby="overview-detail-title">
+    <div class="container">
+      <span class="pill">Service Overview</span>
+      <h2 id="overview-detail-title" class="mt-16">모니터링 · 복약지도 · 비대면진료를 한 플랫폼으로</h2>
+      <p class="lead">데이터가 어떻게 흐르고, 어떤 화면에서 활용되는지 한눈에 보여주는 서비스 전체 구조입니다.</p>
+      <figure class="diagram mt-24" aria-label="서비스 전체 구조 도식">
+        <img src="assets/ppt/invest/image34.png" alt="환자 앱·생체 데이터 → 플랫폼 → 의료진 웹 대시보드로 이어지는 데이터 기반 케어 흐름" loading="eager" />
+      </figure>
     </div>
   </section>
 
-  <!-- 기본 3 모듈 -->
-  <section class="section" id="modules">
+  <!-- 흐름 + AI 안전: 가로 슬라이드 (자동 재생) -->
+  <section class="section section-soft section-carousel-content" id="ecosystem" aria-labelledby="eco-title">
+    <div class="carousel carousel-content" data-carousel>
+      <div class="carousel-track">
+        <div class="carousel-slide" id="slide-arch">
+          <div class="container">
+            <span class="pill">System Architecture</span>
+            <h2 id="eco-title" class="mt-16">통합형 의료 서비스 플랫폼</h2>
+            <p class="lead">의사용(웹)과 환자용(앱)이 실시간으로 연결되고, AI Core가 위험도·이상 탐지·복약 순응도를 평가합니다.</p>
+            <figure class="diagram diagram-arch mt-24" aria-label="서비스 구조 도식">
+              <img src="assets/ppt/invest/image12.png" alt="서비스 구조(System Architecture) 도식" loading="lazy" />
+            </figure>
+            <!-- <div class="grid-2 arch-cards mt-24">
+              <div class="card mini">
+                <h3>의사용 Web</h3>
+                <ul class="list list-2col">
+                  <li>환자 모니터링 대시보드</li>
+                  <li>비대면 화상 진료</li>
+                  <li>전자처방전 발송</li>
+                  <li>AI 분석 리포트 확인</li>
+                </ul>
+              </div>
+              <div class="card mini">
+                <h3>환자용 App</h3>
+                <ul class="list list-2col">
+                  <li>원격 진료 예약/접수</li>
+                  <li>생체정보 자동 수집</li>
+                  <li>복약 알림 및 기록</li>
+                  <li>AI 증상 상담 챗봇</li>
+                </ul>
+              </div>
+            </div> -->
+          </div>
+        </div>
+        <div class="carousel-slide" id="slide-ai-safety">
+          <div class="container">
+            <span class="pill">Medical AI Safety</span>
+            <h2 id="ai-safety-title" class="mt-16">환각(Hallucination) 없는 안전한 의료 AI</h2>
+            <p class="lead">검증된 의료 DB만 참조하는 myDB 기반으로 거짓 정보 리스크를 낮추고, 정량 데이터와 AI 인사이트를 결합한 하이브리드 리포트를 제공합니다.</p>
+            <figure class="diagram figure-luminosity mt-24" aria-label="의료 AI 안전 도식">
+              <img src="assets/ppt/invest/image32.png" alt="환각 없는 안전한 의료 AI 도식(myDB, 하이브리드 AI 리포트)" loading="lazy" />
+            </figure>
+          </div>
+        </div>
+      </div>
+      <button type="button" class="carousel-btn prev" aria-label="이전 슬라이드">‹</button>
+      <button type="button" class="carousel-btn next" aria-label="다음 슬라이드">›</button>
+      <div class="carousel-dots" role="tablist" aria-label="슬라이드"></div>
+    </div>
+  </section>
+
+  <!-- 가치: 투자자/병원 모두가 이해하는 3가지 -->
+  <section class="section" id="why" aria-labelledby="why-title">
     <div class="container">
-      <h2>핵심 기능</h2>
-      <p class="lead">
-        MVIA는 <strong>원격 모니터링, 원격 복약지도, 비대면진료</strong>를 하나로 제공합니다.
-        <br/>
-        외래 간격 사이 환자 상태를 놓치지 않고, 측정 데이터를 한눈에 파악합니다. 복약 순응도 체크는 환자의 합병증 위험을 낮춥니다.  
-      </p>
+      <span class="pill">Fundamental Values</span>
+      <h2 id="why-title" class="mt-16">임상적 가치 · 환자 경험 · 경제적 가치</h2>
+      <p class="lead">의사·공학자 공동 설계로 “현장에서 바로 쓰이는 UX”와 “검증 기반 AI”를 결합합니다.</p>
+      <figure class="figure-narrow figure-luminosity mt-24">
+        <img src="assets/ppt/invest/image29.png" alt="임상적 가치 · 환자 경험 · 경제적 가치" loading="lazy" />
+      </figure>
       <div class="grid-3 mt-24">
-        <article class="card">
-          <h3>① 원격의료(영상/전화)</h3>
-          <p class="meta">예약·문진·진료·처방을 한 화면에서</p>
+        <article class="card card-em">
+          <h3>Clinical Excellence</h3>
+          <p class="meta">하이브리드 AI 리포트 · 위험도 모니터링</p>
           <ul class="list">
-            <li>통화/영상 중 차트·과거 측정치·복약 이력 동시 확인</li>
-            <li>진료 메모·서식 템플릿 제공</li>
+            <li>검증된 의료 지식 기반 정밀 분석</li>
+            <li>상태 악화 시 즉각 알림</li>
           </ul>
         </article>
-
-        <article class="card">
-          <h3>② 환자 모니터링</h3>
-          <p class="meta">혈압/혈당/체중/체온 자동 수집(수동 입력 가능)</p>
+        <article class="card card-em">
+          <h3>Patient Experience</h3>
+          <p class="meta">개인 맞춤형 관리 · 쉬운 접근성</p>
           <ul class="list">
-            <li>임계치 알림, 추세 그래프, 위험 탐지 카드</li>
-            <li>진료실에서 바로 확인하는 환자별 요약 보드</li>
+            <li>복약 알림/증상 체크로 밀착 케어</li>
+            <li>노·장년층도 쉽게 쓰는 직관 UX</li>
           </ul>
         </article>
-
-        <article class="card">
-          <h3>③ 복약순응도 관리</h3>
-          <p class="meta">앱·문자 알림으로 복용 체크 & 미복용 재알림</p>
+        <article class="card card-em">
+          <h3>Economic Efficiency</h3>
+          <p class="meta">운영 최적화 · 신규 수익 모델</p>
           <ul class="list">
-            <li>복약율 리포트로 순응도 한눈에</li>
-            <li>중단/변경 사유 기록, 재처방 시 참고</li>
+            <li>원격 모니터링 기반 효율적 환자 관리</li>
+            <li>No-Show 감소 · 비급여 수익 확장</li>
           </ul>
         </article>
       </div>
     </div>
   </section>
 
-
-  <!-- WORKFLOW -->
-  <section class="section" id="flow">
-    <div class="container flow">
-      <div>
-        <h2>엠비아 워크플로우</h2>
-        <div class="steps mt-16">
-          <!-- <div class="step"><strong>1) 도입</strong> 회원가입 및 로그인(개별 세팅 없음)</div> -->
-          <div class="step"><strong>1) 등록</strong> 환자 등록 & 기기 연동(간편 안내문 제공)</div>
-          <div class="step"><strong>2) 모니터링</strong> 자동 수집·알림으로 상태 파악(지속적인 관리 환자 자동 표기)</div>
-          <div class="step"><strong>3) 원격 진료</strong> 간편 예약 후 통화/영상으로 진료 → 복약 지도/조정</div>
-          <!-- <div class="step"><strong>5) 진료 보고서</strong> 요약 리포트 자동 생성, 다음 외래까지 관리 지속</div> -->
-        </div>
-      </div>
-      <div style="position: relative; padding-top: 50px;">
-        <div class="mock" aria-label="제품 화면 예시"></div>
-        <div class="mt-16" style="position: absolute;bottom: 40px;z-index: 999;left: 50%;transform: translateX(-50%);">
-          <a href="#contact" class="btn primary">1:1 실시간 데모 요청</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ⬇ AI 기반 스마트 기능 섹션 -->
-  <section class="section" id="ai-detail" aria-labelledby="ai-detail-title">
+  <!-- 비즈니스: 운영 최적화 & 수익 -->
+  <!-- <section class="section section-soft" id="biz" aria-labelledby="biz-title">
     <div class="container">
-      <h2 id="ai-detail-title">MVIA와 함께하는 스마트 의료 경험</h2>
-      <p class="lead">인공지능 기술로 더 정확하고 효율적인 의료 서비스를 제공합니다. 의료진과 환자 모두를 위한 지능형 솔루션을 경험해보세요.</p>
-
-      <div class="grid-3 mt-24" role="grid">
-        <article class="card" role="gridcell" data-category="agent">
-          <h3>치료용 에이전트 AI</h3>
-          <ul class="list">
-            <li>환자 건강 데이터의 심층 분석과 패턴 인식</li>
-            <li>의료진의 진단과 치료 계획 수립 지원</li>
-            <li>환자와의 24시간 실시간 소통 및 상담</li>
-          </ul>
-        </article>
-
-        <article class="card" role="gridcell" data-category="assistant">
-          <h3>의사용 AI 어시스턴트</h3>
-          <ul class="list">
-            <li>최신 의료 가이드라인 기반 정보 제공</li>
-            <li>진료 중 실시간 의사결정 지원 시스템</li>
-            <li>반복 업무 자동화로 진료 시간 확보</li>
-          </ul>
-        </article>
-
-        <article class="card" role="gridcell" data-category="monitoring">
-          <h3>스마트 환자 모니터링</h3>
-          <ul class="list">
-            <li>생체신호 실시간 수집 및 이상 탐지</li>
-            <li>가정에서의 지속적인 건강 상태 추적</li>
-            <li>AI 기반 예측 분석 및 조기 경고</li>
-          </ul>
-        </article>
-
-        <article class="card" role="gridcell" data-category="notification">
-          <h3>지능형 알림 시스템</h3>
-          <ul class="list">
-            <li>AI 기반 위험 환자 우선순위 알림</li>
-            <li>이상 징후 자동 감지 및 즉시 경고</li>
-            <li>개인화된 복약 및 검사 일정 관리</li>
-          </ul>
-        </article>
-
-        <article class="card" role="gridcell" data-category="medication">
-          <h3>복약 순응도 AI</h3>
-          <ul class="list">
-            <li>복약 패턴 학습을 통한 맞춤형 관리</li>
-            <li>복약 누락 예측 및 사전 알림 제공</li>
-            <li>약물 상호작용 및 부작용 모니터링</li>
-          </ul>
-        </article>
-
-        <article class="card" role="gridcell" data-category="telemedicine">
-          <h3>AI 강화 원격진료</h3>
-          <ul class="list">
-            <li>음성인식 기반 진료기록 자동 작성</li>
-            <li>AI 보조 진단 및 처방 검증 시스템</li>
-            <li>환자 데이터 통합 분석 및 시각화</li>
-          </ul>
-        </article>
+      <div class="section-head">
+        <div>
+          <span class="pill">Business</span>
+          <h2 id="biz-title" class="mt-16">병원 운영의 최적화 + 신규 수익 창출</h2>
+          <p class="lead">No-Show 감소, 만성질환 관리, 비급여 모델까지 “운영 효율”과 “매출 확장”을 동시에 설계합니다.</p>
+        </div>
+        <div class="head-cta">
+          <a class="btn primary" href="#contact">파트너/도입 문의</a>
+        </div>
       </div>
-    </div>
-  </section>
-  <!-- ▲ AI 스마트 기능 섹션 끝 -->
-
-  <!-- SECURITY -->
-  <section class="section" id="security">
-    <div class="container">
-      <span class="pill">보안 · 규정 · 데이터</span>
-      <h2 class="mt-16">의료기관에 맞춘 안전한 설계</h2>
-      <div class="grid-3 mt-16">
-        <div class="card">
-          <h3>엔터프라이즈급 보안</h3>
-          <p class="meta">AES-256 암호화 및 SSL/TLS 통신 보안</p>
-          <ul class="security-list">
-            <li>데이터 전송 시 end-to-end 암호화</li>
-            <li>역할 기반 접근 제어 (RBAC)</li>
-            <li>2단계 인증 및 세션 관리</li>
-            <li>정기적인 보안 감사 및 취약점 점검</li>
-          </ul>
+      <div class="grid-3 mt-24">
+        <div class="card mini">
+          <h3>No-Show 감소</h3>
+          <p class="meta">예약/알림 자동화로 부도율 감소</p>
         </div>
-        <div class="card">
-          <h3>의료법규 준수</h3>
-          <p class="meta">국내 의료법 및 개인정보보호법 완전 준수</p>
-          <ul class="security-list">
-            <li>비대면 진료 지침 및 절차 준수</li>
-            <li>의료기기 연동 시 안전성 검증</li>
-            <li>환자 동의서 및 진료기록 관리</li>
-            <li>의료진 자격 확인 시스템</li>
-          </ul>
+        <div class="card mini">
+          <h3>만성질환 관리</h3>
+          <p class="meta">주기 모니터링으로 이탈 방지</p>
         </div>
-        <div class="card">
-          <h3>데이터 주권 보장</h3>
-          <p class="meta">의료기관의 데이터 소유권 및 프라이버시 보호</p>
-          <ul class="security-list">
-            <li>진료 데이터는 의료기관에 완전 귀속</li>
-            <li>국내 서버 운영으로 데이터 주권 확보</li>
-            <li>GDPR 수준의 개인정보 처리 방침</li>
-            <li>데이터 백업 및 복구 시스템</li>
-          </ul>
+        <div class="card mini">
+          <h3>신규 수익</h3>
+          <p class="meta">비급여 모델 및 디지털 헬스케어 확장</p>
+        </div>
+      </div>
+      <div class="mt-32 callout">
+        <h3>대상 환자</h3>
+        <p class="meta">“위기 대응”을 넘어 “일상 진료”로 확장 가능한 케이스 중심</p>
+        <div class="grid-3 mt-16">
+          <div class="card mini">
+            <h3>재진 환자</h3>
+            <p class="meta">만성질환(고혈압·당뇨 등) & 1년 이내 대면 진료</p>
+          </div>
+          <div class="card mini">
+            <h3>수술/치료 후 관리</h3>
+            <p class="meta">웨어러블 등 지속 관리가 필요한 환자</p>
+          </div>
+          <div class="card mini">
+            <h3>의료 취약지</h3>
+            <p class="meta">섬/벽지 거주자 및 거동 불편자</p>
+          </div>
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
 
   <!-- PRICING -->
   <!-- <section class="section" id="pricing">
@@ -233,57 +227,152 @@
     </div>
   </section> -->
 
-  <!-- FAQ -->
-  <section class="section" id="faq">
+  <!-- 신뢰: 인증/특허/기술력 -->
+  <section class="section" id="trust" aria-labelledby="trust-title">
     <div class="container">
-      <h2>FAQ</h2>
-      <details class="mt-16">
-        <summary>비용은 얼마인가요?</summary>
-        <p>병원 규모와 필요한 기능에 따라 맞춤형 요금제를 제공합니다. 데모 신청 시 상세한 견적을 안내해드립니다.</p>
-      </details>
-      <details>
-        <summary>설치가 복잡한가요?</summary>
-        <p>웹 기반으로 별도 프로그램 없이 사용 가능하며, 초기 세팅 없이 회원가입 후 바로 사용 가능합니다.</p>
-      </details>
-      <details>
-        <summary>환자 측 준비물은?</summary>
-        <p>스마트폰(앱/문자)과 가정용 혈압계/혈당계 등. 연동 가능한 모델 안내해 드립니다.</p>
-      </details>
-      <details>
-        <summary>원격진료 중 데이터도 함께 보나요?</summary>
-        <p>네, 통화/영상 화면 옆에서 최근 추세와 복약 이력을 동시에 확인할 수 있습니다.</p>
-      </details>
-      <!-- <details>
-        <summary>데이터 보안은 어떻게 보장되나요?</summary>
-        <p>전송·저장 암호화, 권한관리, 감사로그 등 표준 보안 통제를 적용합니다.</p>
-      </details> -->
-      <!-- <details>
-        <summary>도입 교육이 제공되나요?</summary>
-        <p>네. 스태프 대상 1시간 온보딩과 사용 가이드 문서를 제공합니다.</p>
-      </details> -->
+      <span class="pill">Trust</span>
+      <h2 id="trust-title" class="mt-16">기술력과 검증으로 증명</h2>
+      <p class="lead">규제 산업에서 중요한 “근거”를 명확히 제시합니다.</p>
+      <div class="grid-2 grid-2-trust mt-24">
+        <figure>
+          <img src="assets/ppt/invest/image30.png" alt="기술력과 검증" loading="lazy" />
+        </figure>
+        <figure>
+          <img src="assets/ppt/invest/image31.png" alt="기술력과 검증" loading="lazy" />
+        </figure>
+      </div>
     </div>
   </section>
 
+</main>
+
+<div class="contact-footer">
   <!-- CONTACT -->
   <section class="section" id="contact">
     <div class="container center">
-      <h2>원격진료, 가장 쉬운 올인원 플랫폼</h2>
-      <p class="lead">아래 버튼으로 데모를 요청하시면 15분 안에 핵심을 보여드립니다.</p>
+      <h2>MVIA를 만나보세요.</h2>
+      <p class="lead lead-hero hero-sub">미래 의료의 스탠다드, Quere와 함께하십시오.</p>
+      <!-- <p class="lead">15분 데모로 핵심 도식, 운영 효과, 도입 프로세스를 빠르게 공유드립니다.</p> -->
       <div class="cta mt-16">
-        <a class="btn primary" href="mailto:sales@example.com?subject=MVIA%20데모%20요청">데모 신청(이메일)</a>
-        <a class="btn ghost" href="#" onclick="alert('소개서(PDF) 다운로드는 실제 사이트에서 연결하세요.');return false;">소개서 다운로드</a>
+        <a class="btn primary" href="mailto:contact@mvia.io?subject=MVIA%20문의%20하기">문의하기(이메일)</a>
+        <!-- <a class="btn ghost" href="#" onclick="alert('소개서(PDF) 다운로드는 실제 사이트에서 연결하세요.');return false;">소개서 다운로드</a> -->
       </div>
-      <p class="mt-16" style="color:var(--muted)">문의: 02-000-0000 · 카카오톡 채널 @mvia</p>
+      <!-- <p class="mt-16" style="color:var(--muted)">문의: 02-000-0000 · 카카오톡 채널 @mvia</p> -->
     </div>
   </section>
-</main>
+  <footer>
+    <div class="container center">
+      <div class="spacer"></div>
+      <small>© 2025 MVIA. All rights reserved.</small>
+    </div>
+  </footer>
+</div>
 
-<footer>
-  <div class="container center">
-    <div class="spacer"></div>
-    <small>© 2025 MVIA. All rights reserved.</small>
-  </div>
-</footer>
+<script>
+(() => {
+  const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  // 헤더: 히어로를 스크롤로 지나치면 배경·어두운 텍스트 적용
+  const heroBg = document.querySelector('.hero-bg');
+  const header = document.querySelector('header');
+  if (heroBg && header) {
+    const onScroll = () => {
+      const rect = heroBg.getBoundingClientRect();
+      document.body.classList.toggle('scrolled-past-hero', rect.bottom < 0);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+
+  // Scroll reveal
+  const revealEls = Array.from(document.querySelectorAll('.reveal'));
+  if (!prefersReduced && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add('is-in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach((el) => io.observe(el));
+  } else {
+    revealEls.forEach((el) => el.classList.add('is-in'));
+  }
+
+  // Carousel
+  const carousels = Array.from(document.querySelectorAll('[data-carousel]'));
+  carousels.forEach((root) => {
+    const track = root.querySelector('.carousel-track');
+    const slides = Array.from(root.querySelectorAll('.carousel-slide'));
+    const btnPrev = root.querySelector('.carousel-btn.prev');
+    const btnNext = root.querySelector('.carousel-btn.next');
+    const dots = root.querySelector('.carousel-dots');
+    if (!track || slides.length === 0) return;
+
+    let index = 0;
+    let timer = null;
+    const clamp = (n) => (n + slides.length) % slides.length;
+
+    const setIndex = (next, { focusDot = false } = {}) => {
+      index = clamp(next);
+      track.style.transform = `translateX(${-index * 100}%)`;
+      const dotBtns = Array.from(dots.querySelectorAll('button'));
+      dotBtns.forEach((b, i) => {
+        b.setAttribute('aria-selected', i === index ? 'true' : 'false');
+        b.tabIndex = i === index ? 0 : -1;
+      });
+      if (focusDot) dotBtns[index]?.focus();
+      if (root.classList.contains('carousel-content')) {
+        if (btnPrev) btnPrev.classList.toggle('carousel-btn--hidden', index === 0);
+        if (btnNext) btnNext.classList.toggle('carousel-btn--hidden', index === slides.length - 1);
+      }
+    };
+
+    const mkDots = () => {
+      if (!dots) return;
+      dots.innerHTML = '';
+      slides.forEach((_, i) => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'dot';
+        b.setAttribute('role', 'tab');
+        b.setAttribute('aria-label', `${i + 1}번 슬라이드`);
+        b.addEventListener('click', () => setIndex(i, { focusDot: true }));
+        dots.appendChild(b);
+      });
+    };
+
+    const start = () => {
+      if (prefersReduced) return;
+      stop();
+      timer = window.setInterval(() => setIndex(index + 1), 5200);
+    };
+    const stop = () => {
+      if (timer) window.clearInterval(timer);
+      timer = null;
+    };
+
+    mkDots();
+    setIndex(0);
+
+    btnPrev?.addEventListener('click', () => setIndex(index - 1));
+    btnNext?.addEventListener('click', () => setIndex(index + 1));
+
+    root.addEventListener('mouseenter', stop);
+    root.addEventListener('mouseleave', start);
+    root.addEventListener('focusin', stop);
+    root.addEventListener('focusout', start);
+
+    // Keyboard
+    root.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') { e.preventDefault(); setIndex(index - 1); }
+      if (e.key === 'ArrowRight') { e.preventDefault(); setIndex(index + 1); }
+    });
+
+    start();
+  });
+})();
+</script>
 </body>
 </html>
