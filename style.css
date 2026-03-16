@@ -453,7 +453,7 @@ footer{padding:32px 0;color:#5f6b7a;background:none}
 .diagram img{display:block;width:100%;height:auto}
 .figure-narrow{max-width:960px;margin-left:auto;margin-right:auto}
 .figure-narrow img{display:block;width:100%;height:auto}
-.figure-luminosity img{mix-blend-mode:luminosity;border-radius:10px}
+.figure-luminosity img{border-radius:10px}
 .callout{
   background:
     radial-gradient(900px 220px at 10% 0%, rgba(47,107,255,.10), transparent 55%),
