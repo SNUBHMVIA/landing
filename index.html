@@ -31,7 +31,10 @@
 </header>
 
 <section class="hero" id="top">
-  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-bg" aria-hidden="true">
+    <video class="hero-bg__video is-active" data-hero="fwd" src="hero.mp4" autoplay muted playsinline preload="auto"></video>
+    <video class="hero-bg__video" data-hero="rev" src="hero-reverse.mp4" muted playsinline preload="auto"></video>
+  </div>
   <div class="hero-grid" aria-hidden="true"></div>
   <div class="container hero-inner">
     <h1>Connecting Care,<br />Redefining Clinical Flow</h1>
@@ -58,7 +61,9 @@
 
       <div class="tech-grid">
         <article class="tech-card">
-          <div class="tech-card__bg" style="background-image:url('main01.png')"></div>
+          <div class="tech-card__bg">
+            <video src="tech-01.mp4?v=4" autoplay muted loop playsinline></video>
+          </div>
           <div class="tech-card__overlay"></div>
           <div class="tech-card__body">
             <span class="tech-card__num">01</span>
@@ -67,7 +72,9 @@
           </div>
         </article>
         <article class="tech-card">
-          <div class="tech-card__bg" style="background-image:url('main02.png')"></div>
+          <div class="tech-card__bg">
+            <video src="tech-02.mp4" autoplay muted loop playsinline></video>
+          </div>
           <div class="tech-card__overlay"></div>
           <div class="tech-card__body">
             <span class="tech-card__num">02</span>
@@ -76,7 +83,9 @@
           </div>
         </article>
         <article class="tech-card">
-          <div class="tech-card__bg" style="background-image:url('video03.png')"></div>
+          <div class="tech-card__bg">
+            <video src="tech-03.mp4" autoplay muted loop playsinline></video>
+          </div>
           <div class="tech-card__overlay"></div>
           <div class="tech-card__body">
             <span class="tech-card__num">03</span>
@@ -442,6 +451,60 @@
     reveals.forEach((el) => io.observe(el));
   } else {
     reveals.forEach((el) => el.classList.add('is-in'));
+  }
+
+  if (prefersReduced) {
+    document.querySelectorAll('.hero-bg__video, .tech-card__bg video').forEach((v) => {
+      v.pause();
+      v.removeAttribute('autoplay');
+    });
+  } else {
+    // Ping-pong with a real reverse file so playback never pauses/seeks mid-frame
+    const fwd = document.querySelector('[data-hero="fwd"]');
+    const rev = document.querySelector('[data-hero="rev"]');
+    if (fwd && rev) {
+      let switching = false;
+      let active = fwd;
+      let standby = rev;
+
+      const armStandby = (v) => {
+        try { v.pause(); } catch (_) {}
+        if (v.readyState >= 1) v.currentTime = 0;
+      };
+
+      const switchPair = async () => {
+        if (switching) return;
+        switching = true;
+        const next = standby;
+        const prev = active;
+        try {
+          if (next.readyState >= 1) next.currentTime = 0;
+          await next.play();
+          next.classList.add('is-active');
+          prev.classList.remove('is-active');
+          armStandby(prev);
+          active = next;
+          standby = prev;
+        } catch (_) {
+          // keep going on the current clip if play() is blocked
+        }
+        switching = false;
+      };
+
+      const watch = (v) => {
+        v.addEventListener('timeupdate', () => {
+          if (v !== active || switching || !v.duration) return;
+          // hand off before the natural end so the last frame never holds
+          if (v.currentTime >= v.duration - 0.08) switchPair();
+        });
+        v.addEventListener('ended', () => {
+          if (v === active) switchPair();
+        });
+      };
+      watch(fwd);
+      watch(rev);
+      armStandby(rev);
+    }
   }
 })();
 </script>
