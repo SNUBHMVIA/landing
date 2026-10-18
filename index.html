@@ -7,6 +7,7 @@
   <meta name="description" content="환자 모니터링, 문진·차트 지원 AI, 의료기관 협력을 위한 MVIA Quere 플랫폼" />
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
   <link rel="stylesheet" href="style.css" />
+  <link rel="preload" as="image" href="hero-poster.jpg" fetchpriority="high" />
 </head>
 <body>
 
@@ -32,8 +33,9 @@
 
 <section class="hero" id="top">
   <div class="hero-bg" aria-hidden="true">
-    <video class="hero-bg__video is-active" data-hero="fwd" src="hero.mp4" autoplay muted playsinline preload="auto"></video>
-    <video class="hero-bg__video" data-hero="rev" src="hero-reverse.mp4" muted playsinline preload="auto"></video>
+    <img class="hero-bg__poster" src="hero-poster.jpg" alt="" width="1920" height="1080" decoding="async" fetchpriority="high" />
+    <video class="hero-bg__video is-active" data-hero="fwd" src="hero.mp4" poster="hero-poster.jpg" autoplay muted playsinline preload="auto"></video>
+    <video class="hero-bg__video" data-hero="rev" src="hero-reverse.mp4" poster="hero-poster.jpg" muted playsinline preload="auto"></video>
   </div>
   <div class="hero-grid" aria-hidden="true"></div>
   <div class="container hero-inner">
@@ -62,7 +64,8 @@
       <div class="tech-grid">
         <article class="tech-card">
           <div class="tech-card__bg">
-            <video src="tech-01.mp4?v=4" autoplay muted loop playsinline></video>
+            <img class="tech-card__poster" src="tech-01.jpg" alt="" width="960" height="720" decoding="async" />
+            <video src="tech-01.mp4?v=7" poster="tech-01.jpg" autoplay muted loop playsinline preload="metadata"></video>
           </div>
           <div class="tech-card__overlay"></div>
           <div class="tech-card__body">
@@ -73,7 +76,8 @@
         </article>
         <article class="tech-card">
           <div class="tech-card__bg">
-            <video src="tech-02.mp4" autoplay muted loop playsinline></video>
+            <img class="tech-card__poster" src="tech-02.jpg" alt="" width="960" height="720" decoding="async" />
+            <video src="tech-02.mp4" poster="tech-02.jpg" autoplay muted loop playsinline preload="metadata"></video>
           </div>
           <div class="tech-card__overlay"></div>
           <div class="tech-card__body">
@@ -84,7 +88,8 @@
         </article>
         <article class="tech-card">
           <div class="tech-card__bg">
-            <video src="tech-03.mp4" autoplay muted loop playsinline></video>
+            <img class="tech-card__poster" src="tech-03.jpg" alt="" width="960" height="720" decoding="async" />
+            <video src="tech-03.mp4" poster="tech-03.jpg" autoplay muted loop playsinline preload="metadata"></video>
           </div>
           <div class="tech-card__overlay"></div>
           <div class="tech-card__body">
@@ -453,6 +458,17 @@
     reveals.forEach((el) => el.classList.add('is-in'));
   }
 
+  const markVideoReady = (v) => {
+    if (v.readyState >= 2) v.classList.add('is-ready');
+  };
+  document.querySelectorAll('.hero-bg__video, .tech-card__bg video').forEach((v) => {
+    const onReady = () => markVideoReady(v);
+    v.addEventListener('loadeddata', onReady);
+    v.addEventListener('playing', onReady);
+    v.addEventListener('canplay', onReady);
+    markVideoReady(v);
+  });
+
   if (prefersReduced) {
     document.querySelectorAll('.hero-bg__video, .tech-card__bg video').forEach((v) => {
       v.pause();
@@ -480,6 +496,7 @@
         try {
           if (next.readyState >= 1) next.currentTime = 0;
           await next.play();
+          markVideoReady(next);
           next.classList.add('is-active');
           prev.classList.remove('is-active');
           armStandby(prev);
