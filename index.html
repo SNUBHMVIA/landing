@@ -459,15 +459,62 @@
   }
 
   const markVideoReady = (v) => {
+    if (v.error) return;
     if (v.readyState >= 2) v.classList.add('is-ready');
   };
-  document.querySelectorAll('.hero-bg__video, .tech-card__bg video').forEach((v) => {
-    const onReady = () => markVideoReady(v);
+  const allVideos = document.querySelectorAll('.hero-bg__video, .tech-card__bg video');
+
+  // Explicitly start playback instead of relying on the autoplay attribute alone,
+  // and keep retrying until the clip is actually running.
+  const shouldAutoplay = (v) =>
+    !prefersReduced && !v.dataset.standby &&
+    (v.hasAttribute('autoplay') || v.classList.contains('hero-bg__video'));
+  const tryPlay = (v) => {
+    if (!shouldAutoplay(v) || v.error || !v.paused) return;
+    v.muted = true;
+    v.defaultMuted = true;
+    const p = v.play();
+    if (p && p.catch) p.catch(() => {});
+  };
+  const retryPlayAll = () => allVideos.forEach(tryPlay);
+
+  allVideos.forEach((v) => {
+    const onReady = () => { markVideoReady(v); tryPlay(v); };
+    v.addEventListener('loadedmetadata', onReady);
     v.addEventListener('loadeddata', onReady);
-    v.addEventListener('playing', onReady);
     v.addEventListener('canplay', onReady);
+    v.addEventListener('canplaythrough', onReady);
+    v.addEventListener('playing', () => markVideoReady(v));
+    v.addEventListener('stalled', () => tryPlay(v));
+    v.addEventListener('suspend', () => tryPlay(v));
+    v.addEventListener('pause', () => {
+      // a clip paused by the browser (not by our ping-pong) is restarted
+      if (!v.ended && !v.dataset.standby) setTimeout(() => tryPlay(v), 120);
+    });
+    // decode/network failure: drop the clip and keep the poster image visible
+    v.addEventListener('error', () => {
+      v.classList.remove('is-ready');
+      v.dataset.failed = '1';
+      if (!v.dataset.reloaded) {
+        v.dataset.reloaded = '1';
+        setTimeout(() => { try { v.load(); tryPlay(v); } catch (_) {} }, 1500);
+      }
+    });
     markVideoReady(v);
+    tryPlay(v);
   });
+
+  // retry while nothing is running yet (first 20s), then on tab return / bfcache restore
+  let retryTicks = 0;
+  const retryTimer = setInterval(() => {
+    retryPlayAll();
+    if (++retryTicks >= 40) clearInterval(retryTimer);
+  }, 500);
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') retryPlayAll();
+  });
+  window.addEventListener('pageshow', retryPlayAll);
+  window.addEventListener('focus', retryPlayAll);
 
   if (prefersReduced) {
     document.querySelectorAll('.hero-bg__video, .tech-card__bg video').forEach((v) => {
@@ -482,8 +529,10 @@
       let switching = false;
       let active = fwd;
       let standby = rev;
+      rev.dataset.standby = '1';
 
       const armStandby = (v) => {
+        v.dataset.standby = '1';
         try { v.pause(); } catch (_) {}
         if (v.readyState >= 1) v.currentTime = 0;
       };
@@ -494,7 +543,10 @@
         const next = standby;
         const prev = active;
         try {
+          if (next.error) throw new Error('standby clip failed');
           if (next.readyState >= 1) next.currentTime = 0;
+          delete next.dataset.standby;
+          next.muted = true;
           await next.play();
           markVideoReady(next);
           next.classList.add('is-active');
@@ -503,10 +555,16 @@
           active = next;
           standby = prev;
         } catch (_) {
-          // keep going on the current clip if play() is blocked
+          // keep going on the current clip if the other one is blocked or broken
+          next.dataset.standby = '1';
+          if (prev.paused && !prev.error) tryPlay(prev);
         }
         switching = false;
       };
+
+      // if the running clip fails to load, move to the other one right away
+      fwd.addEventListener('error', () => { if (active === fwd) switchPair(); });
+      rev.addEventListener('error', () => { if (active === rev) switchPair(); });
 
       const watch = (v) => {
         v.addEventListener('timeupdate', () => {
