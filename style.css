@@ -274,19 +274,15 @@ img { max-width: 100%; height: auto; display: block; }
   pointer-events: none;
 }
 
+/* animated WebP on top of the still poster; the poster paints first, the animation covers it once downloaded */
 .hero-bg__video {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0;
   z-index: 1;
   pointer-events: none;
-}
-
-.hero-bg__video.is-active.is-ready {
-  opacity: 1;
 }
 
 @keyframes heroZoom {
@@ -422,7 +418,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .tech-card__poster,
-.tech-card__bg video {
+.tech-card__anim {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -435,14 +431,8 @@ img { max-width: 100%; height: auto; display: block; }
   z-index: 0;
 }
 
-.tech-card__bg video {
+.tech-card__anim {
   z-index: 1;
-  opacity: 0;
-  transition: opacity 0.35s ease;
-}
-
-.tech-card__bg video.is-ready {
-  opacity: 1;
 }
 
 .tech-card:hover .tech-card__bg {
@@ -750,6 +740,8 @@ img { max-width: 100%; height: auto; display: block; }
 @media (prefers-reduced-motion: reduce) {
   .hero-bg { animation: none; transform: none; }
   .reveal { opacity: 1; transform: none; transition: none; }
+  /* keep the still posters only */
+  .hero-bg__video, .tech-card__anim { display: none; }
 }
 
 @media (max-width: 899px) {
