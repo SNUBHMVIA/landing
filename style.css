@@ -740,8 +740,7 @@ img { max-width: 100%; height: auto; display: block; }
 @media (prefers-reduced-motion: reduce) {
   .hero-bg { animation: none; transform: none; }
   .reveal { opacity: 1; transform: none; transition: none; }
-  /* keep the still posters only */
-  .hero-bg__video, .tech-card__anim { display: none; }
+  /* Windows "animation effects off" turns this media query on; the animated WebP keeps playing regardless */
 }
 
 @media (max-width: 899px) {
